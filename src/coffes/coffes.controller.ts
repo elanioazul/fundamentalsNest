@@ -11,7 +11,7 @@ export class CoffesController {
     return `Thix action return ${id} coffe`;
   }
   @Post()
-  create(@Body() body) {
+  create(@Body('name') body) {
     return body;
   }
 }
