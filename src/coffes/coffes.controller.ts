@@ -2,8 +2,8 @@ import { Controller, Get } from '@nestjs/common';
 
 @Controller('coffes')
 export class CoffesController {
-  @Get()
+  @Get('flavours')
   findAll() {
-    return 'Eyyy';
+    return 'Thix action return all coffes';
   }
 }
