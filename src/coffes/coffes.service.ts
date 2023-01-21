@@ -22,6 +22,7 @@ export class CoffesService {
         return this.coffes;
     }
     findOne(id: string) {
+        throw 'A randome rror here'
         const coffe = this.coffes.find(item => item.id === +id);
         if (!coffe) {
             throw new NotFoundException(`Coffe ${id} is not found in db`)
