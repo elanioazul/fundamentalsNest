@@ -4,12 +4,15 @@ import { Repository } from "typeorm";
 import { Coffe } from "./entities/coffe.entity";
 import { CreateCoffeeDto } from 'src/coffes/dto/create-coffee.dto'
 import { UpdateCoffeeDto } from "./dto/update-coffee.dto";
+import { Flavor } from "./entities/flavor.entity";
 
 @Injectable()
 export class CoffesService {
     constructor(
         @InjectRepository(Coffe)
         private readonly coffeRepository: Repository<Coffe>,
+        @InjectRepository(Flavor)
+        private readonly flavorRepository: Repository<Flavor>,
       ) {}
 
     async findAll() {
