@@ -76,6 +76,14 @@ export class CoffesService {
       
       await queryRunner.connect();
       await queryRunner.startTransaction(); 
+
+      try {
+        await queryRunner.commitTransaction();
+      } catch (err) {
+        await queryRunner.rollbackTransaction();
+      } finally {
+        await queryRunner.release();
+      }
     }
 
     private async preloadFlavorByName(name: string): Promise<Flavor> {
