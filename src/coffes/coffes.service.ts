@@ -52,4 +52,12 @@ export class CoffesService {
         const coffeeIndex = await this.findOne(id);
         return this.coffeRepository.remove((coffeeIndex))
     }
+
+    private async preloadFlavorByName(name: string): Promise<Flavor> {
+        const existingFlavor = await this.flavorRepository.findOne({ where: { name } });
+        if (existingFlavor) {
+          return existingFlavor;
+        }
+        return this.flavorRepository.create({ name });
+      }
 }
