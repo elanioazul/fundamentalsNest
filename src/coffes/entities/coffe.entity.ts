@@ -1,8 +1,15 @@
-import { Entity } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 @Entity()
 export class Coffe {
+	@PrimaryGeneratedColumn()
 	id: number;
+
+	@Column()
 	name: string;
+
+	@Column()
 	brand: string;
+
+	
 	flavors: string[];
 }
