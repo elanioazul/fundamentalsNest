@@ -10,6 +10,6 @@ export class Coffe {
 	@Column()
 	brand: string;
 
-	
+	@Column('json', {nullable : true})
 	flavors: string[];
 }
