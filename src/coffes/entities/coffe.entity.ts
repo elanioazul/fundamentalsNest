@@ -18,5 +18,5 @@ export class Coffe {
 		{ cascade: true }
 	)
 	
-	flavors: string[];
+	flavors: Flavor[];
 }

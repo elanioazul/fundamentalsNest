@@ -36,9 +36,12 @@ export class CoffesService {
     }
     async create(createCoffeeDto: CreateCoffeeDto) {
         const flavors = await Promise.all(
-            createCoffeeDto.flavors.map(name => this.preloadFlavorByName(name))
+            createCoffeeDto.flavors.map(flav => this.preloadFlavorByName(flav.name))
         )
-        const coffe = this.coffeRepository.create(createCoffeeDto);
+        const coffe = this.coffeRepository.create({
+            ...createCoffeeDto,
+            flavors
+        });
         return this.coffeRepository.save(coffe);
     }
     async update(id: string, updateCoffeeDto: UpdateCoffeeDto) {
