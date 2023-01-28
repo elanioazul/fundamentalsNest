@@ -71,6 +71,13 @@ export class CoffesService {
         return this.coffeRepository.remove((coffeeIndex))
     }
 
+    async recommendCoffee(coffee: Coffe) {
+      const queryRunner = this.dataSource.createQueryRunner();
+      
+      await queryRunner.connect();
+      await queryRunner.startTransaction(); 
+    }
+
     private async preloadFlavorByName(name: string): Promise<Flavor> {
         const existingFlavor = await this.flavorRepository.findOne({ where: { name } });
         if (existingFlavor) {
