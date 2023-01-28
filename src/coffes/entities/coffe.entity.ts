@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, JoinTable } from "typeorm";
 @Entity()
 export class Coffe {
 	@PrimaryGeneratedColumn()
@@ -10,6 +10,6 @@ export class Coffe {
 	@Column()
 	brand: string;
 
-	@Column('json', {nullable : true})
+	@JoinTable()
 	flavors: string[];
 }
