@@ -13,10 +13,19 @@ export class CoffesService {
       ) {}
 
     async findAll() {
-        return this.coffeRepository.find();
+        return this.coffeRepository.find({
+            relations: {
+                flavors: true
+            }
+        });
     }
     async findOne(id: string) {
-        const coffe = this.coffeRepository.find({ where:{ id: +id}});
+        const coffe = this.coffeRepository.find({
+             where:{ id: +id},
+             relations: {
+                flavors: true
+             }
+            });
         if (!coffe) {
             throw new NotFoundException(`Coffe ${id} is not found in db`)
         }
