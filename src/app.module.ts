@@ -13,7 +13,7 @@ import { CoffesModule } from './coffes/coffes.module';
       port: 5435, //  port exposed 
       username: 'postgres', // username
       password: 'pass123', // user password (same in docker-compose file)
-      database: 'postgres', // name of our database,
+      database: 'ilovecoffe', // name of our database,
       autoLoadEntities: true, // models will be loaded automatically 
       synchronize: true, // your entities will be synced with the database(recommended: disable in prod)
     })

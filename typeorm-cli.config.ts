@@ -9,7 +9,7 @@ export default new DataSource({
     port: 5435,
     username: 'postgres',
     password: 'pass123',
-    database: 'postgres',
-    entities: [Coffe, Flavor],
+    database: 'ilovecoffe',
+    entities: [],
     migrations: [CoffeRefactor1674993279775],
   });
