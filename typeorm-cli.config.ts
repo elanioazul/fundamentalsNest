@@ -10,6 +10,6 @@ export default new DataSource({
     username: 'postgres',
     password: 'pass123',
     database: 'ilovecoffe',
-    entities: [],
+    entities: [Coffe, Flavor],
     migrations: [CoffeRefactor1674993279775],
   });
