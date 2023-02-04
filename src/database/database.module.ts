@@ -24,7 +24,7 @@ export class DatabaseModule {
         providers: [
           {
             provide: 'CONNECTION',
-            useValue: new DataSource(options), 
+            useValue: new DataSource(options).initialize(), 
           }
         ]
       }
