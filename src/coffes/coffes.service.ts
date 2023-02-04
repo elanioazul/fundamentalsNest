@@ -7,8 +7,9 @@ import { UpdateCoffeeDto } from "./dto/update-coffee.dto";
 import { Flavor } from "./entities/flavor.entity";
 import { PaginationQueryDto } from "src/common/dto/pagination-query.dto";
 import { Event } from '../events/entities/event.entity';
-import { COFFE_BRANDS } from 'src/coffes/coffes.constants'
-@Injectable({ scope: Scope.REQUEST})
+import { COFFE_BRANDS } from 'src/coffes/coffes.constants';
+import { ConfigService } from '@nestjs/config';
+@Injectable({ scope: Scope.DEFAULT})
 export class CoffesService {
     constructor(
         @InjectRepository(Coffe)
@@ -16,10 +17,11 @@ export class CoffesService {
         @InjectRepository(Flavor)
         private readonly flavorRepository: Repository<Flavor>,
         private readonly dataSource: DataSource,
-        @Inject(COFFE_BRANDS) coffeBrands: string
+        @Inject(COFFE_BRANDS) coffeBrands: string,
+        private readonly configService: ConfigService
       ) {
-        console.log('here is one instantation because I am singleton');
-        
+        const databaseHost = this.configService.get<string>('DATABASE_HOST');
+        console.log(databaseHost);
       }
 
     async findAll(paginationQuery: PaginationQueryDto) {
