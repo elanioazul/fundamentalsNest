@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Inject, Injectable, NotFoundException } from "@nestjs/common";
+import { HttpException, HttpStatus, Inject, Injectable, NotFoundException, Scope } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { DataSource, Repository } from "typeorm";
 import { Coffe } from "./entities/coffe.entity";
@@ -8,7 +8,7 @@ import { Flavor } from "./entities/flavor.entity";
 import { PaginationQueryDto } from "src/common/dto/pagination-query.dto";
 import { Event } from '../events/entities/event.entity';
 import { COFFE_BRANDS } from 'src/coffes/coffes.constants'
-@Injectable()
+@Injectable({ scope: Scope.TRANSIENT})
 export class CoffesService {
     constructor(
         @InjectRepository(Coffe)
@@ -18,7 +18,7 @@ export class CoffesService {
         private readonly dataSource: DataSource,
         @Inject(COFFE_BRANDS) coffeBrands: string
       ) {
-        console.log(coffeBrands);
+        console.log('here is one instantation because I am singleton');
         
       }
 
