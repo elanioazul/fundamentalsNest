@@ -10,7 +10,7 @@ import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: '.environment'
+      ignoreEnvFile: true
     }),
     CoffesModule, 
     TypeOrmModule.forRoot({
