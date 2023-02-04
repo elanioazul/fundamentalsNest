@@ -1,4 +1,4 @@
-import { Injectable, Module } from '@nestjs/common';
+import { Injectable, Module, Scope } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Event } from 'src/events/entities/event.entity';
 import { DataSource } from 'typeorm/data-source/DataSource';
@@ -33,6 +33,7 @@ import { Flavor } from './entities/flavor.entity';
             return coffeeBrands;
             },
             inject: [DataSource],
+            scope: Scope.TRANSIENT
         },
     ],
     exports: [CoffesService]
