@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CoffesModule } from './coffes/coffes.module';
 import { CoffeRatingModule } from './coffe-rating/coffe-rating.module';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [
@@ -18,7 +19,7 @@ import { CoffeRatingModule } from './coffe-rating/coffe-rating.module';
       autoLoadEntities: true, // models will be loaded automatically 
       synchronize: true, // your entities will be synced with the database(recommended: disable in prod)
     }), 
-    CoffeRatingModule
+    CoffeRatingModule, DatabaseModule
   ],
   controllers: [AppController ],
   providers: [AppService],
