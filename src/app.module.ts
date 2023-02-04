@@ -13,11 +13,11 @@ import { ConfigModule } from '@nestjs/config';
     CoffesModule, 
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost', // database host
-      port: 5435, //  port exposed 
-      username: 'postgres', // username
-      password: 'pass123', // user password (same in docker-compose file)
-      database: 'ilovecoffe', // name of our database,
+      host: process.env.DATABASE_HOST,
+      port: +process.env.DATABASE_PORT,
+      username: process.env.DATABASE_USER,
+      password: process.env.DATABASE_PASSWORD,
+      database: process.env.DATABASE_NAME,
       autoLoadEntities: true, // models will be loaded automatically 
       synchronize: true, // your entities will be synced with the database(recommended: disable in prod)
     }), 
