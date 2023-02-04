@@ -1,16 +1,32 @@
-import { Module } from '@nestjs/common';
-import { DataSource } from 'typeorm';
+import { DynamicModule, Module } from '@nestjs/common';
+import { DataSource, DataSourceOptions } from 'typeorm';
 
-@Module({
-    providers: [
-        {
+// @Module({
+//     providers: [
+//         {
+//             provide: 'CONNECTION',
+//             useValue: new DataSource({
+//                 type: 'postgres',
+//                 host: 'localhost',
+//                 port: 5432
+//             }).initialize()
+//         }
+//     ]
+// })
+
+
+// Improved Dynamic Module way of creating CONNECTION provider
+@Module({})
+export class DatabaseModule {
+    static register(options: DataSourceOptions): DynamicModule {
+      return {
+        module: DatabaseModule,
+        providers: [
+          {
             provide: 'CONNECTION',
-            useValue: new DataSource({
-                type: 'postgres',
-                host: 'localhost',
-                port: 5432
-            }).initialize()
-        }
-    ]
-})
-export class DatabaseModule {}
+            useValue: new DataSource(options), 
+          }
+        ]
+      }
+    }
+  }
