@@ -5,9 +5,11 @@ import { AppService } from './app.service';
 import { CoffesModule } from './coffes/coffes.module';
 import { CoffeRatingModule } from './coffe-rating/coffe-rating.module';
 import { DatabaseModule } from './database/database.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     CoffesModule, 
     TypeOrmModule.forRoot({
       type: 'postgres',
