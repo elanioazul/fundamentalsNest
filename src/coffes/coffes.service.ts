@@ -21,7 +21,7 @@ export class CoffesService {
         @Inject(COFFE_BRANDS) coffeBrands: string,
         private readonly configService: ConfigService
       ) {
-        const coffesConfig = this.configService.get('coffees-config');
+        const coffesConfig = this.configService.get('coffees-config.foo');
         console.log(coffesConfig);
       }
 
