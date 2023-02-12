@@ -6,13 +6,16 @@ import {
 	Param,
 	Patch,
 	Post,
-	Query,
+	Query
 } from "@nestjs/common";
+import { UsePipes, UseFilters, UseGuards } from "@nestjs/common/decorators";
+import { ValidationPipe } from "@nestjs/common/pipes";
 import { PaginationQueryDto } from "src/common/dto/pagination-query.dto";
 import { CoffesService } from "./coffes.service";
 import { CreateCoffeeDto} from "./dto/create-coffee.dto";
 import { UpdateCoffeeDto} from "./dto/update-coffee.dto";
 
+@UsePipes(ValidationPipe)
 @Controller("coffes")
 export class CoffesController {
 	constructor(private readonly coffesService: CoffesService){};
