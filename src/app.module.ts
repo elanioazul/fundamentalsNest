@@ -6,15 +6,12 @@ import { CoffesModule } from './coffes/coffes.module';
 import { CoffeRatingModule } from './coffe-rating/coffe-rating.module';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
-import * as Joi from '@hapi/joi';
+import appConfig from './config/app.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      validationSchema: Joi.object({
-        DATABASE_HOST: Joi.required(),
-        DATABASE_PORT: Joi.number().default(5435),
-      }),
+      load: [appConfig]
     }),
     CoffesModule, 
     TypeOrmModule.forRoot({

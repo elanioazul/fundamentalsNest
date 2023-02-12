@@ -20,7 +20,7 @@ export class CoffesService {
         @Inject(COFFE_BRANDS) coffeBrands: string,
         private readonly configService: ConfigService
       ) {
-        const databaseHost = this.configService.get<string>('DATABASE_HOST');
+        const databaseHost = this.configService.get('database.host');
         console.log(databaseHost);
       }
 
