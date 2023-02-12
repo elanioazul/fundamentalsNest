@@ -15,10 +15,12 @@ import { CoffesService } from "./coffes.service";
 import { CreateCoffeeDto} from "./dto/create-coffee.dto";
 import { UpdateCoffeeDto} from "./dto/update-coffee.dto";
 
-@UsePipes(ValidationPipe)
+
 @Controller("coffes")
 export class CoffesController {
 	constructor(private readonly coffesService: CoffesService){};
+	
+	@UsePipes(ValidationPipe)
 	@Get()
 	findAll(@Query() paginationQuery: PaginationQueryDto) {
 		return this.coffesService.findAll(paginationQuery);
