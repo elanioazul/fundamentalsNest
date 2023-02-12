@@ -8,8 +8,6 @@ import {
 	Post,
 	Query
 } from "@nestjs/common";
-import { UsePipes, UseFilters, UseGuards } from "@nestjs/common/decorators";
-import { ValidationPipe } from "@nestjs/common/pipes";
 import { PaginationQueryDto } from "src/common/dto/pagination-query.dto";
 import { CoffesService } from "./coffes.service";
 import { CreateCoffeeDto} from "./dto/create-coffee.dto";
@@ -35,7 +33,7 @@ export class CoffesController {
 		return this.coffesService.create(createCoffeDto)
 	}
 	@Patch(":id")
-	update(@Param("id") id: string, @Body(ValidationPipe) UpdateCoffeeDto: UpdateCoffeeDto) {
+	update(@Param("id") id: string, @Body() UpdateCoffeeDto: UpdateCoffeeDto) {
 		return this.coffesService.update(id, UpdateCoffeeDto);
 	}
 	@Delete(":id")
