@@ -9,6 +9,7 @@ import {
 	Query,
 	SetMetadata
 } from "@nestjs/common";
+import { Public } from "src/common/decorators/public.decorator";
 import { PaginationQueryDto } from "src/common/dto/pagination-query.dto";
 import { CoffesService } from "./coffes.service";
 import { CreateCoffeeDto} from "./dto/create-coffee.dto";
@@ -20,7 +21,7 @@ export class CoffesController {
 	constructor(private readonly coffesService: CoffesService){};
 
 	@Get()
-	@SetMetadata('isPublic', true)
+	@Public()
 	findAll(@Query() paginationQuery: PaginationQueryDto) {
 		return this.coffesService.findAll(paginationQuery);
 	}
