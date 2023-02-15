@@ -10,6 +10,7 @@ import {
 	SetMetadata
 } from "@nestjs/common";
 import { ApiForbiddenResponse, ApiResponse } from "@nestjs/swagger";
+import { ApiTags } from "@nestjs/swagger/dist";
 import { Protocol } from "src/common/decorators/protocol.decorator";
 import { Public } from "src/common/decorators/public.decorator";
 import { PaginationQueryDto } from "src/common/dto/pagination-query.dto";
@@ -18,7 +19,7 @@ import { CoffesService } from "./coffes.service";
 import { CreateCoffeeDto} from "./dto/create-coffee.dto";
 import { UpdateCoffeeDto} from "./dto/update-coffee.dto";
 
-
+@ApiTags('coffes')
 @Controller("coffes")
 export class CoffesController {
 	constructor(private readonly coffesService: CoffesService){};
