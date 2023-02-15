@@ -24,7 +24,7 @@ export class CoffesController {
 
 	@Get()
 	@Public()
-	/*async*/ findAll(@Protocol() protocol: string, @Query() paginationQuery: PaginationQueryDto) {
+	/*async*/ findAll(@Protocol('https') protocol: string, @Query() paginationQuery: PaginationQueryDto) {
 		//await new Promise(resolve => setTimeout(resolve, 5000));
 		console.log(protocol);
 		
